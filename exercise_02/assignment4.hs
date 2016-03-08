@@ -48,6 +48,19 @@ root x = aux x y0
       | goodEnough ( improve x yn ) yn = improve x yn
       | otherwise                      = aux x ( improve x yn ) 
 
+
+
+root_short :: Double -> Double
+root_short x = aux x y0
+  where 
+    y0 = 1
+    
+    aux x yn 
+      | goodEnough y_ yn = y_
+      | otherwise        = aux x y_ 
+      where
+        y_ = improve x yn
+
 {-
  Now extend this to work with I/O. That is, write 
  a main function that asks the user for a
