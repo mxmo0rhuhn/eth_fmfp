@@ -18,8 +18,8 @@ case "$1" in
     HAS_RUNNING=$(docker ps | grep " $DOCKER_CONTAINER " | wc -l )
     if [ $HAS_RUNNING -eq 1 ]; then
       echo "Has running container - changing into"
-      line
       echo docker exec -it $DOCKER_CONTAINER bash
+      line
       docker exec -it $DOCKER_CONTAINER bash
       exit 0 
     fi
@@ -27,13 +27,13 @@ case "$1" in
     HAS_CONTAINER=$(docker ps -a | grep " $DOCKER_CONTAINER " | wc -l )
     if [ $HAS_CONTAINER -eq 0 ]; then
       echo "Has no container - creating one"
-      line
       echo docker run -i --name $DOCKER_CONTAINER -v "$EXEC_PATH":$CONTAINER_WORKSPACE_LOCATION -t $DOCKER_IMAGE
+      line
       docker run -i --name $DOCKER_CONTAINER -v "$EXEC_PATH":$CONTAINER_WORKSPACE_LOCATION -t $DOCKER_IMAGE
     else
       echo "Has container - starting it"
-      line
       echo docker start -i $DOCKER_CONTAINER
+      line
       docker start -i $DOCKER_CONTAINER
     fi
     ;;

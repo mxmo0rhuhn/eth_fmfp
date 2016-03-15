@@ -5,19 +5,19 @@
  - consists of substrings separated by a separator, 
  - into a list of strings. Examples:
  -
- - split ’#’ "foo##goo" = ["foo","","goo"]
- - split ’#’ "#" = ["",""]
+ - split '#' "foo##goo" = ["foo","","goo"]
+ - split '#' "#" = ["",""]
  -}
+
+-- without Data.List.Split splitOn
 split :: Char -> String -> [String]
-split string pattern
-  | [] _      = []
-  | _  ""     = string
-  | otherwise = aux [] sting pattern
-    where
-     aux cur rem p
-       | head rem = p 
-
-
+split _ []           = [""]
+split pattern string = aux pattern string [] [] 
+  where
+    aux _ [] cur list  = list ++ [cur]
+    aux p (x:xs) cur list 
+      | x == p    = aux p xs [] ( list ++ [cur] ) 
+      | otherwise = aux p xs ( cur ++ [x] ) list 
 
 {- B)
  - Define a function 
@@ -40,11 +40,10 @@ split string pattern
  - toWords " lots of white    " = ["lots","of","white"]
  -}
 isASpace :: Char -> Bool
-isASpace = undefined
+isASpace x = x == ' '
 
 toWords :: String -> [String]
-toWords = undefined
-
+toWords x = filter (\x -> x /= "") ( split ' ' x )
 
 {-
  - Define a function 
@@ -52,4 +51,4 @@ toWords = undefined
  - number of words in a String.
  -}
 countWords :: String -> Int
-countWords = undefined
+countWords x = length (toWords x)
