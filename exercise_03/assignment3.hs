@@ -37,3 +37,7 @@ firstPrimes m
         | m == 0    = []
         | prime n   = [n] ++ getPrimes (n + 1) (m - 1) 
         | otherwise = getPrimes (n + 1) m 
+
+
+fancyFirstPrimes :: Int -> [Int]
+fancyFirstPrimes m = take m ( filter prime [1..] ) -- works since haskell is lazy and will not create a infinite list

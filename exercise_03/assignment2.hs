@@ -32,3 +32,7 @@ otp msg key  = map (  \(x , y) -> (x || y) && (not ( x == y))) ( zip msg key )
  
 otpFancy :: [Bool] -> [Bool] -> [Bool]
 otpFancy msg key  = zipWith (  \x -> \y -> (x || y) && (not ( x == y))) msg key
+
+otpFancy :: [Bool] -> [Bool] -> [Bool]
+otpFancy2 = zipWith ( /= )  -- sugar msg & keys can be left out 
+

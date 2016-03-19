@@ -1,5 +1,5 @@
 # FMFP
-Exercises for the ETH lecture in Formal Methods and Functional Programming.
+Exercises for the ETH lecture on formal methods and functional programming.
 
 Run `./start.sh setup` to build a working environment. Afterwards you can run `./start.sh` to switch to this environment. __This requires docker to be installed on your system!__
 
