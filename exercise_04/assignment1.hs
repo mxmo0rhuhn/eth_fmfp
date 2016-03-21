@@ -81,7 +81,7 @@ accepts dfa w = ( finalState dfa ( foldl ( transition dfa ) ( initial dfa ) w ) 
 
 lexicon :: Alphabet a -> Int -> [Word a]
 lexicon a n 
-  | n == 0   = []
+  | n == 0   = [[]]
   | otherwise = aux (n-1) a ( foldl (\w c -> [c] : w ) [] a )
     where 
       aux :: Int -> Alphabet a -> [Word a] -> [Word a]
