@@ -15,6 +15,7 @@
 concatMap' f = foldr aux e
   where
     aux elem list = ( f elem ) ++ list 
+-- or aux = \x xs -> f x ++ xs
     e             = []
 
 {- b) 
@@ -24,4 +25,5 @@ concatMap' f = foldr aux e
  - id x = x. Your solutions should have the form 
  - myFoldl f v l = foldr ... .
  -}
-myFoldl f v l = undefined
+myFoldl f v l = foldr (\x folded z -> folded (f z x)) id xs ) z 
+

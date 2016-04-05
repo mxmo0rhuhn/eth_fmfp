@@ -18,7 +18,7 @@ dappend :: Dlist a -> Dlist a -> Dlist a
 dappend xs ys = \zs -> xs ( ys zs )
 -- dappend xs ys = xs . ys  would also be possible to
 
-fromList :: [a] > DList a 
+fromList :: [a] -> DList a 
 fromList xs = \ys -> xs ++ ys
 
 toList :: DList a -> [a]

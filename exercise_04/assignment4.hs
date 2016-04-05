@@ -33,9 +33,14 @@ h = aux 0
 
 f :: [[a]] -> [a]
 f = foldr (\x y -> (reverse x) ++ y) []
+-- f = concatMap reverse
 
 g :: Eq a => [a] -> [a] -> [a]
 g xs ys = foldr (\z acc -> (fst z) : acc) [] (filter ( \(x,y) -> x == y) (zip xs ys))
+-- g xs ys = map fst ( filter (uncurry (==)) (uip xs ys))
+-- curryed (==) a -> a -> b
+-- uncurryed (==) (a, a) -> b
 
 h :: [Int] -> Int
 h xs = foldr (\x acc -> 1 + acc) 0 ( filter even xs)
+-- h = length . filter even
