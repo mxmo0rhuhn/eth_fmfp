@@ -1,6 +1,8 @@
 dist
 cabal-dev
 *.o
+*.out
+*.trail
 *.hi
 *.chi
 *.chs.h
