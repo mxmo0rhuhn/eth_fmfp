@@ -9,6 +9,9 @@ else
   file=$1
 fi 
 
+# convenience
+clear 
+
 # create model
 spin -a ${file}.pml
 

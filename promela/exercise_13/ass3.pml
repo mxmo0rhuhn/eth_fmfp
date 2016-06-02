@@ -38,33 +38,43 @@ inline critical(me) {
 }
 
 proctype watchdog() {
+  printf("Watchdog started\n"); 
   assert(mutex < 2);
+  printf("Watchdog finished\n"); 
 }
 
 proctype proc(bit me; bit other) {
-   interested[me] = 1;
+  printf("Proceess %d started\n", me ); 
+  interested[me] = 1;
 
-   do
-     :: interested[other] == 1 && decide != me -> interested[me] = 0; 
-  printf("Proceess %d waiting for decide bit (is currently %d ) \n", me, decide);
-     decide != me ; interested[me] = 1;
-     :: interested[other] != 1 -> printf("Proceess %d no other process interestted. \n", me ); break;
-   od
+  do
+    :: interested[other] == 1 && decide != me -> interested[me] = 0; 
+      printf("Proceess %d waiting for decide bit (is currently %d ) \n", me, decide); 
+      decide == me ; 
+      printf("Proceess %d done waiting for decide bit (is now %d ) \n", me, decide); 
+      interested[me] = 1;
+    :: interested[other] != 1 -> printf("Proceess %d no other process interestted. \n", me ); break;
+  od
 
-   critical(me);
+  critical(me);
 
-   decide = other;
-   interested[me] = 0;
+  decide = other;
+  interested[me] = 0;
+  printf("Proceess %d finished\n", me ); 
 }
 
 init {
+  printf("Init started\n"); 
   run watchdog();
 
   if 
-  :: decide = 0;
-  :: decide = 1;
+    :: decide = 0;
+    :: decide = 1;
   fi
 
   run proc(0,1);
   run proc(1,0);
+
+  /* wait for termination */
+  printf("Init finished\n"); 
 }

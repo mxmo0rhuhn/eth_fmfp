@@ -28,7 +28,8 @@ RUN groupadd $IMAGE_USER \
     && echo "echo 'Run a random execution:       spin <pml_name>.pml'" >> /home/$IMAGE_USER/.bashrc \
     && echo "echo 'Create all possible states    spin -a <pml_name>.pml'" >> /home/$IMAGE_USER/.bashrc \
     && echo "echo 'Build:                        gcc -o <out_name> -march=corei7 -O2 -pipe pan.c'" >> /home/$IMAGE_USER/.bashrc \
-    && echo "echo 'All in one:                   sp <pml_name>'" >> /home/$IMAGE_USER/.bashrc 
+    && echo "echo 'All in one:                   sp <pml_name>'" >> /home/$IMAGE_USER/.bashrc \
+    && echo "echo 'View trail file:              spin -t <pml_name>.pml'" >> /home/$IMAGE_USER/.bashrc 
 
 USER $IMAGE_USER
 
