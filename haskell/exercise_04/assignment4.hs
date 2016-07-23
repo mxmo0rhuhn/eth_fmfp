@@ -37,7 +37,7 @@ f = foldr (\x y -> (reverse x) ++ y) []
 
 g :: Eq a => [a] -> [a] -> [a]
 g xs ys = foldr (\z acc -> (fst z) : acc) [] (filter ( \(x,y) -> x == y) (zip xs ys))
--- g xs ys = map fst ( filter (uncurry (==)) (uip xs ys))
+-- g xs ys = map fst ( filter (uncurry (==)) (zip xs ys))
 -- curryed (==) a -> a -> b
 -- uncurryed (==) (a, a) -> b
 

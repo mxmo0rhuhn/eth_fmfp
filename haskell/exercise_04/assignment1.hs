@@ -1,7 +1,7 @@
 import Prelude hiding (Word)
 
 {-
- -In this exercise, we consider deterministic finite automata (DFA). 
+ - In this exercise, we consider deterministic finite automata (DFA). 
  - A DFA (Q, Σ, q 0 , δ, F ) over an alphabet Σ consists of a 
  - finite set of states Q, an initial state q_0, a transition 
  - function δ : Q × Σ → Q and a set of final states F. 
@@ -91,6 +91,11 @@ lexicon a n
       addChar :: Alphabet a -> [Word a] -> [Word a]
       addChar [] words     = []
       addChar (x:xs) words = map (\y -> x : y ) words ++ addChar xs words
+
+{- Way cooler with list comprehensions: -}
+lexicon2 :: Alphabet a -> Int -> [Word a]
+lexicon2 alphabet 0 = [[]]
+lexicon2 alphabet n = [c:w | c <- alphabet, w <- lexicon alphabet (n-1)]
 
 {-d) 
  - Write a function language :: DFA a -> Int -> [Word a] that outputs the list of all
