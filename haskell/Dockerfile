@@ -19,6 +19,7 @@ RUN groupadd $IMAGE_USER \
     && echo "echo 'Repeat last command in ghci   :r[eload]'" >> /home/$IMAGE_USER/.bashrc \
     && echo "echo 'Get type of element in ghci   :t[ype]'" >> /home/$IMAGE_USER/.bashrc \
     && echo "echo 'Load module into ghci         :module'" >> /home/$IMAGE_USER/.bashrc \
+    && echo "echo 'Display statistics in ghci    :set +s'" >> /home/$IMAGE_USER/.bashrc \
     && echo "echo 'Run shell command in ghci     :! <cmd>'" >> /home/$IMAGE_USER/.bashrc \
     && echo "echo 'Quit ghci                     :q[uit]'" >> /home/$IMAGE_USER/.bashrc 
 
