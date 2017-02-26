@@ -1,0 +1,56 @@
+1.  
+*Main> gcdiv 139629 83496
+21
+*Main> gcdiv 139629 (-83496)
+^CInterrupted.
+*Main> gcdiv 139629 0
+^CInterrupted.
+
+=> Loop for 0 and negative values
+
+2.
+gcdInt :: Int -> Int -> Int
+gcdInt x y = gcdiv (abs x) (abs y)
+
+*Main> gcdInt 139629 (-83496)
+21
+*Main> gcdInt 139629 0
+^CInterrupted.
+
+=> 0 Still does not terminate
+
+3. 
+Simplify: Use gcd from prelude.
+
+*Main> gcd 139629 (-83496)
+21
+*Main> gcd 139629 0
+139629
+*Main> gcd 139629 83496
+21
+
+4.
+*Main> :t gcdiv
+gcdiv :: Int -> Int -> Int
+*Main> gcdiv 3.6 7.2
+
+<interactive>:29:7:
+    No instance for (Fractional Int) arising from the literal `3.6'
+    Possible fix: add an instance declaration for (Fractional Int)
+    In the first argument of `gcdiv', namely `3.6'
+    In the expression: gcdiv 3.6 7.2
+    In an equation for `it': it = gcdiv 3.6 7.2
+
+=> function for Doubles (or remove fix typed int)
+gcdiv2 :: Double -> Double -> Double
+gcdiv2 x y
+ | x == y      = x
+ | y > x       = gcdiv2 x (y-x)
+ | otherwise   = gcdiv2 (x-y) y
+
+*Main> gcdiv2 3.6 7.2
+3.6
+*Main> gcdiv2 3.6 7.1999999999999
+^CInterrupted.
+
+=> loop for 7.1999999999999
