@@ -15,13 +15,15 @@ RUN groupadd $IMAGE_USER \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && echo "echo 'Build:                        ghc -o <out_name> <in_file>.hs'" >> /home/$IMAGE_USER/.bashrc \
     && echo "echo 'Run interactive:              ghci'" >> /home/$IMAGE_USER/.bashrc \
-    && echo "echo 'Load file in ghci             :l[oad]'" >> /home/$IMAGE_USER/.bashrc \
+    && echo "echo 'Help in ghci                  :?'" >> /home/$IMAGE_USER/.bashrc \
+    && echo "echo 'Load file in ghci             :l[oad] <file>'" >> /home/$IMAGE_USER/.bashrc \
     && echo "echo 'Repeat last command in ghci   :r[eload]'" >> /home/$IMAGE_USER/.bashrc \
-    && echo "echo 'Get type of element in ghci   :t[ype]'" >> /home/$IMAGE_USER/.bashrc \
+    && echo "echo 'Get type of element in ghci   :t[ype] <elem>'" >> /home/$IMAGE_USER/.bashrc \
     && echo "echo 'Load module into ghci         :module'" >> /home/$IMAGE_USER/.bashrc \
     && echo "echo 'Display statistics in ghci    :set +s'" >> /home/$IMAGE_USER/.bashrc \
     && echo "echo 'Run shell command in ghci     :! <cmd>'" >> /home/$IMAGE_USER/.bashrc \
-    && echo "echo 'Quit ghci                     :q[uit]'" >> /home/$IMAGE_USER/.bashrc 
+    && echo "echo 'Quit ghci                     :q[uit]'" >> /home/$IMAGE_USER/.bashrc \
+    && echo "ghci'" >> /home/$IMAGE_USER/.bashrc 
 
 USER $IMAGE_USER
 
