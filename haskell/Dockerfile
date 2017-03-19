@@ -23,7 +23,7 @@ RUN groupadd $IMAGE_USER \
     && echo "echo 'Display statistics in ghci    :set +s'" >> /home/$IMAGE_USER/.bashrc \
     && echo "echo 'Run shell command in ghci     :! <cmd>'" >> /home/$IMAGE_USER/.bashrc \
     && echo "echo 'Quit ghci                     :q[uit]'" >> /home/$IMAGE_USER/.bashrc \
-    && echo "ghci'" >> /home/$IMAGE_USER/.bashrc 
+    && echo "ghci" >> /home/$IMAGE_USER/.bashrc 
 
 USER $IMAGE_USER
 
