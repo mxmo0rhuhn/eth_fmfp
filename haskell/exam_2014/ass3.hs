@@ -1,3 +1,18 @@
+stableDn2 [] = []
+stableDn2 a
+  | a == dvdNxt2 a = a
+  | otherwise = stableDn2 (dvdNxt2 a)
+
+dvdNxt2 :: [Int] -> [Int]
+dvdNxt2 (x:y:xs) 
+  | mod y x == 0 = x : dvdNxt (y:xs)
+  | otherwise    = dvdNxt (y:xs)
+dvdNxt2 a = a
+
+-- prepend2 _ [] = []
+-- prepend2 _ [[]] = []
+-- prepend2 pref elem = [ pref ++ x | x <- xs, xs <- elem ]
+
 dvdNxt :: [Int] -> [Int]
 dvdNxt x = aux x
   where 
